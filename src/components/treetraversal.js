@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import '../App.css';
 
 class treeTraversal extends Component {
   constructor(props) {
@@ -10,6 +10,7 @@ class treeTraversal extends Component {
     return(
       <div>
         <h2>Tree Traversal</h2>
+
       </div>
     );
   };
