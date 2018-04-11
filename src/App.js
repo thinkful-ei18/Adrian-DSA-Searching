@@ -87,6 +87,7 @@ class App extends Component {
     return (
       <div className="App">
           <h1 className="App-title">Adrian-DSA-Searching</h1>
+          <h2>Linear & Binary Search</h2>
           <form>
             <input
               type="number"
