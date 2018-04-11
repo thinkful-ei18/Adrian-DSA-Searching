@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Search from './components/linear-binary';
 
 function linearSearch(array, input) {
   let attempts = 0;
@@ -87,34 +88,7 @@ class App extends Component {
     return (
       <div className="App">
           <h1 className="App-title">Adrian-DSA-Searching</h1>
-          <h2>Linear & Binary Search</h2>
-          <form>
-            <input
-              type="number"
-              placeholder="Your Favorite Number"
-              value={this.state.value}
-              onChange={this.handleChange}
-            />
-            <button
-              name="linear"
-              onClick={event => {
-                  event.preventDefault();
-                  this.onLinearSearch();
-                }}
-              >Linear Search
-            </button>
-            <button
-              name="binary"
-              onClick={event => {
-                event.preventDefault();
-                this.onBinarySearch();
-              }}
-              >Binary Search
-            </button>
-          </form>
-          <p>
-            {searchResult}
-          </p>
+          <Search />
       </div>
     );
   }
