@@ -13,6 +13,35 @@ function linearSearch(array, input) {
   return 'Could not find ' + input + ' in ' + attempts + ' searches';
 };
 
+function binarySearch(array, input, start, end) {
+  const value = parseInt(input, 10);
+  array = array.sort((a,b) => a - b);
+
+  console.log(array);
+  start = start === undefined ? 0 : start;
+  end = end === undefined ? array.length : end;
+
+  if (start > end) {
+      return -1;
+  }
+
+  const index = Math.floor((start + end) / 2);
+  const item = array[index];
+
+  console.log(start, end);
+  if (item === undefined) {
+    return 'Could not find ' + input + ' in ' + index + ' searches';
+  }
+  if (item === value) {
+      return index;
+  }
+  else if (item < value) {
+      return binarySearch(array, value, index + 1, end);
+  }
+  else if (item > value) {
+      return binarySearch(array, value, start, index - 1);
+  }
+};
 
 class App extends Component {
 
@@ -34,45 +63,26 @@ class App extends Component {
     this.setState({value: event.target.value});
   }
 
-  onLinearClick() {
+  onLinearSearch() {
     const result = linearSearch(this.state.data, this.state.value);
-    this.setState({result: result});
+    this.setState({result});
     }
 
-  binarySearch(array, value, start, end) {
-    array = array.sort((a,b) => a - b);
-    start = start === undefined ? 0 : start;
-    end = end === undefined ? array.length : end;
-
-    if (start > end) {
-        return -1;
-    }
-
-    const index = Math.floor((start + end) / 2);
-    const item = array[index];
-
-    console.log(start, end);
-    if (item === value) {
-        return index;
-    }
-    else if (item < value) {
-        return this.binarySearch(array, value, index + 1, end);
-    }
-    else if (item > value) {
-        return this.binarySearch(array, value, start, index - 1);
-    }
-  };
+  onBinarySearch(){
+    const result = binarySearch(this.state.data, this.state.value);
+    this.setState({result});
+  }
 
   render() {
-    let linearResult;
+    let searchResult;
 
     if (this.state.result === '') {
-      linearResult = '';
+      searchResult = '';
     } else if (typeof this.state.result === 'string') {
-      linearResult = this.state.result;
+      searchResult = this.state.result;
     }
     else {
-      linearResult = 'Found the number ' + this.state.value + ' in ' + this.state.result + ' searches';
+      searchResult = 'Found the number ' + this.state.value + ' in ' + this.state.result + ' searches';
     }
 
     return (
@@ -87,21 +97,23 @@ class App extends Component {
             />
             <button
               name="linear"
-              onClick={event =>
-                {
+              onClick={event => {
                   event.preventDefault();
-                  this.onLinearClick();
-                }
-              }
+                  this.onLinearSearch();
+                }}
               >Linear Search
             </button>
             <button
               name="binary"
+              onClick={event => {
+                event.preventDefault();
+                this.onBinarySearch();
+              }}
               >Binary Search
             </button>
           </form>
           <p>
-            {linearResult}
+            {searchResult}
           </p>
       </div>
     );
