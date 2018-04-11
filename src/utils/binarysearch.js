@@ -1,6 +1,6 @@
 export default function binarySearch(array, value, start, end) {
-  var start = start === undefined ? 0 : start;
-  var end = end === undefined ? array.length : end;
+   start = start === undefined ? 0 : start;
+   end = end === undefined ? array.length : end;
 
   if (start > end) {
       return -1;
@@ -10,7 +10,7 @@ export default function binarySearch(array, value, start, end) {
   const item = array[index];
 
   console.log(start, end);
-  if (item == value) {
+  if (item === value) {
       return index;
   }
   else if (item < value) {
