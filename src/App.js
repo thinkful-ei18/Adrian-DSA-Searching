@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import linearSearch from './utils/linearsearch';
-import binarySearch from './utils/binarysearch';
 
 class App extends Component {
 
@@ -21,6 +19,40 @@ class App extends Component {
   handleChange(event) {
     this.setState({value: event.target.value});
   }
+
+  indexOf(array, value) {
+
+    for (let i=0; i<array.length; i++) {
+        if (array[i] === value) {
+            return i;
+        }
+    }
+    return -1;
+  };
+
+  binarySearch(array, value, start, end) {
+    array = array.sort((a,b) => a - b);
+    start = start === undefined ? 0 : start;
+     end = end === undefined ? array.length : end;
+
+    if (start > end) {
+        return -1;
+    }
+
+    const index = Math.floor((start + end) / 2);
+    const item = array[index];
+
+    console.log(start, end);
+    if (item === value) {
+        return index;
+    }
+    else if (item < value) {
+        return this.binarySearch(array, value, index + 1, end);
+    }
+    else if (item > value) {
+        return this.binarySearch(array, value, start, index - 1);
+    }
+  };
 
   render() {
     return (
