@@ -1,4 +1,5 @@
 export default function binarySearch(array, value, start, end) {
+  array = array.sort();
    start = start === undefined ? 0 : start;
    end = end === undefined ? array.length : end;
 
