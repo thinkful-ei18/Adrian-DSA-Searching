@@ -60,7 +60,7 @@ class App extends Component {
 
   handleChange(event) {
     event.preventDefault();
-    this.setState({value: event.target.value});
+    this.setState({value: event.target.value, result: ''});
   }
 
   onLinearSearch() {
