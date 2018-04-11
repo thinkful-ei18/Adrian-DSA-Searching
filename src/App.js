@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Search from './components/linear-binary';
+import TreeTraversal from './components/treetraversal';
 
 function linearSearch(array, input) {
   let attempts = 0;
@@ -88,7 +89,8 @@ class App extends Component {
     return (
       <div className="App">
           <h1 className="App-title">Adrian-DSA-Searching</h1>
-          <Search />
+          <Search/>
+          <TreeTraversal/>
       </div>
     );
   }
