@@ -1,7 +1,10 @@
 import BinarySearchTree from './binarySearchTree';
-const util = require('util');
+import { inspect } from "util";
 
-function preOrderTraversal () {
+function preOrderTraversal (tree) {
+  let value;
+  let values = [];
+
   let BST = new BinarySearchTree();
     // 25 15 50 10 24 35 70 4 12 18 31 44 66 90 22
     BST.insert(25,25);
@@ -19,9 +22,15 @@ function preOrderTraversal () {
     BST.insert(66,66);
     BST.insert(90,90);
 
+  if (tree.key === null) {
+    return;
+  }
 
-
-  console.log(util.inspect(BST, false, null));
+  if (tree.left) {
+    value = tree.left.value;
+    values.push(value)
+  }
+  console.log(inspect(BST, false, null));
 }
 
 // Tree traversal
